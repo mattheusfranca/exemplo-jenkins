@@ -23,15 +23,14 @@ pipeline {
 		
         stage ('Deploy') {
             steps {
-					echo 'Deploying...'
+		echo 'Deploying...'
             }
         }
 		
         stage ('Sonar') {
             steps {
-			     sh 'mvn sonar:sonar -Dsonar.host.url=http://host.docker.internal:9000 -Dsonar.login=9c4e300f094dd343742f7cc59703d9863c6b1644'
-			}
-
+		sh 'mvn sonar:sonar -Dsonar.host.url=http://host.docker.internal:9000 -Dsonar.login=${SONAR_TOKEN}'
+	    }
         }
 		
     }
