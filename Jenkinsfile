@@ -17,7 +17,7 @@ pipeline {
         }
         stage ('Build') {
             steps {
-                sh 'mvn clean install -Dmaven.test.skip=true  -Dquarkus.http.port=8084'
+                sh 'mvn clean install -Dquarkus.http.port=8084'
             }
         }
 		
