@@ -26,9 +26,11 @@ pipeline {
             }
         }
 		
-        stage ('Deploy') {
+        stage ('Deploy/Run') {
             steps {
 		echo 'Deploying...'
+		sh 'docker compose -f /var/env/compose.yaml down'
+		sh 'docker compose -f /var/env/compose.yaml up'
             }
         }
 		
