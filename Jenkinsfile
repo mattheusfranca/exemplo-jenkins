@@ -19,9 +19,9 @@ pipeline {
         stage ('Build') {
             steps {
                 sh 'mvn install -DskipTests -Dquarkus.http.port=8084'
-                sh 'docker build -f src/main/docker/Dockerfile.jvm -t udesc/devopsnapratica .'
+                sh 'docker build -f src/main/docker/Dockerfile.jvm -t mattheushora/udesc .'
                 sh 'docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}'
-                sh 'docker push udesc/devopsnapratica'
+                sh 'docker push mattheushora/udesc'
                 
             }
         }
