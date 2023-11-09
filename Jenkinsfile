@@ -29,8 +29,10 @@ pipeline {
         stage ('Deploy/Run') {
             steps {
 		echo 'Deploying...'
-		sh 'docker compose -f /var/env/compose.yaml down'
-		sh 'docker compose -f /var/env/compose.yaml up'
+		dir("/var/jenkins_home/env/dev"){
+               	sh 'docker compose down'
+                       sh 'docker compose up -d'
+                }
             }
         }
 		
